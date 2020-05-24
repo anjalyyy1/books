@@ -1,11 +1,13 @@
 import React from 'react';
-import BookList from 'pages/bookList';
+import Routes from 'routes';
+import GlobalStyle from 'globalStyle';
+import Layout from './components/layout';
 
 function App() {
   return (
     <div className='App'>
-      <BookList />
-      app
+      <Routes />
+      <GlobalStyle />
     </div>
   );
 }
