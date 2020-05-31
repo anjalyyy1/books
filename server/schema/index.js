@@ -8,7 +8,8 @@ const {
   GraphQLID,
   GraphQLInt,
   GraphQLList,
-  GraphQLNonNull
+  GraphQLNonNull,
+  Gra
 } = graphql;
 const _ = require('lodash');
 const Book = require('../models/book');
@@ -29,7 +30,9 @@ const BookType = new GraphQLObjectType({
         // parent has the object we found book(id: 2)-> this is the parent wch has id as 2
         return Author.findById(parent.authorId);
       }
-    }
+    },
+    description: { type: GraphQLString },
+    price: { type: GraphQLString }
   })
 });
 
@@ -62,7 +65,7 @@ const rootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         // code to get data from db/other source
         // return _.find(dummyBooks, { _id: args._id });
-        return Author.findById(args._id);
+        return Book.findById(args._id);
       }
     },
     author: {
@@ -111,13 +114,17 @@ const Mutation = new GraphQLObjectType({
       args: {
         name: { type: new GraphQLNonNull(GraphQLString) },
         genre: { type: new GraphQLNonNull(GraphQLString) },
-        authorId: { type: new GraphQLNonNull(GraphQLID) }
+        authorId: { type: new GraphQLNonNull(GraphQLID) },
+        description: { type: new GraphQLNonNull(GraphQLString) },
+        price: { type: GraphQLString }
       },
       resolve(parent, args) {
         let book = new Book({
           name: args.name,
           genre: args.genre,
-          authorId: args.authorId
+          description: args.description,
+          authorId: args.authorId,
+          price: args.price
         });
 
         return book.save();

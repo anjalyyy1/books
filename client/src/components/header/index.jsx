@@ -23,7 +23,7 @@ const ListOptions = () => {
   return (
     <List className={classes.list}>
       {map(headerOptions, (eachOption, index) => (
-        <StyledLink to={get(eachOption, `link`)}>
+        <StyledLink to={get(eachOption, `link`)} key={index}>
           <ListItem
             key={get(eachOption, `name`)}
             style={{
