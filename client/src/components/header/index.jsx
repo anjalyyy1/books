@@ -10,7 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import headerOptions from '../constants';
 import ListItem from '@material-ui/core/ListItem';
 import { Link } from 'react-router-dom';
-import LogoImage from 'assets/books-logo.png';
+import LogoImage from 'assets/books-logo.svg';
 
 const useStyles = makeStyles({
   list: {
